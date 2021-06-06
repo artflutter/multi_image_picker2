@@ -5,16 +5,16 @@ import 'package:multi_image_picker2/multi_image_picker2.dart';
 
 class Asset {
   /// The resource identifier
-  String _identifier;
+  String? _identifier;
 
   /// The resource file name
-  String _name;
+  String? _name;
 
   /// Original image width
-  int _originalWidth;
+  int? _originalWidth;
 
   /// Original image height
-  int _originalHeight;
+  int? _originalHeight;
 
   Asset(
     this._identifier,
@@ -33,32 +33,32 @@ class Asset {
   String get _originalChannel => '$_channel.original';
 
   /// Returns the original image width
-  int get originalWidth {
+  int? get originalWidth {
     return _originalWidth;
   }
 
   /// Returns the original image height
-  int get originalHeight {
+  int? get originalHeight {
     return _originalHeight;
   }
 
   /// Returns true if the image is landscape
   bool get isLandscape {
-    return _originalWidth > _originalHeight;
+    return _originalWidth! > _originalHeight!;
   }
 
   /// Returns true if the image is Portrait
   bool get isPortrait {
-    return _originalWidth < _originalHeight;
+    return _originalWidth! < _originalHeight!;
   }
 
   /// Returns the image identifier
-  String get identifier {
+  String? get identifier {
     return _identifier;
   }
 
   /// Returns the image name
-  String get name {
+  String? get name {
     return _name;
   }
 
@@ -76,14 +76,11 @@ class Asset {
   /// by calling releaseThumb() method.
   Future<ByteData> getThumbByteData(int width, int height,
       {int quality = 100}) async {
-    assert(width != null);
-    assert(height != null);
-
-    if (width != null && width < 0) {
+    if (width < 0) {
       throw new ArgumentError.value(width, 'width cannot be negative');
     }
 
-    if (height != null && height < 0) {
+    if (height < 0) {
       throw new ArgumentError.value(height, 'height cannot be negative');
     }
 
@@ -93,17 +90,17 @@ class Asset {
     }
 
     Completer completer = new Completer<ByteData>();
-    ServicesBinding.instance.defaultBinaryMessenger
-        .setMessageHandler(_thumbChannel, (ByteData message) async {
+    ServicesBinding.instance!.defaultBinaryMessenger
+        .setMessageHandler(_thumbChannel, (ByteData? message) async {
       completer.complete(message);
-      ServicesBinding.instance.defaultBinaryMessenger
+      ServicesBinding.instance!.defaultBinaryMessenger
           .setMessageHandler(_thumbChannel, null);
       return message;
     });
 
     await MultiImagePicker.requestThumbnail(
         _identifier, width, height, quality);
-    return completer.future;
+    return completer.future as FutureOr<ByteData>;
   }
 
   /// Requests the original image for that asset.
@@ -122,16 +119,16 @@ class Asset {
     }
 
     Completer completer = new Completer<ByteData>();
-    ServicesBinding.instance.defaultBinaryMessenger
-        .setMessageHandler(_originalChannel, (ByteData message) async {
+    ServicesBinding.instance!.defaultBinaryMessenger
+        .setMessageHandler(_originalChannel, (ByteData? message) async {
       completer.complete(message);
-      ServicesBinding.instance.defaultBinaryMessenger
+      ServicesBinding.instance!.defaultBinaryMessenger
           .setMessageHandler(_originalChannel, null);
       return message;
     });
 
     await MultiImagePicker.requestOriginal(_identifier, quality);
-    return completer.future;
+    return completer.future as FutureOr<ByteData>;
   }
 
   /// Requests the original image meta data

@@ -20,10 +20,10 @@ class AssetThumb extends StatefulWidget {
   final Widget spinner;
 
   const AssetThumb({
-    Key key,
-    @required this.asset,
-    @required this.width,
-    @required this.height,
+    Key? key,
+    required this.asset,
+    required this.width,
+    required this.height,
     this.quality = 100,
     this.spinner = const Center(
       child: SizedBox(
@@ -39,7 +39,7 @@ class AssetThumb extends StatefulWidget {
 }
 
 class _AssetThumbState extends State<AssetThumb> {
-  ByteData _thumbData;
+  ByteData? _thumbData;
 
   int get width => widget.width;
   int get height => widget.height;
@@ -85,7 +85,7 @@ class _AssetThumbState extends State<AssetThumb> {
       return spinner;
     }
     return Image.memory(
-      _thumbData.buffer.asUint8List(),
+      _thumbData!.buffer.asUint8List(),
       key: ValueKey(asset.identifier),
       fit: BoxFit.cover,
       gaplessPlayback: true,

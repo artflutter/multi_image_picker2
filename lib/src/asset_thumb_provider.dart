@@ -19,13 +19,11 @@ class AssetThumbImageProvider extends ImageProvider<AssetThumbImageProvider> {
 
   const AssetThumbImageProvider(
     this.asset, {
-    @required this.width,
-    @required this.height,
+    required this.width,
+    required this.height,
     this.quality = 100,
     this.scale = 1.0,
-  })  : assert(asset != null),
-        assert(width != null),
-        assert(height != null);
+  });
 
   @override
   ImageStreamCompleter load(
@@ -62,7 +60,7 @@ class AssetThumbImageProvider extends ImageProvider<AssetThumbImageProvider> {
   bool operator ==(dynamic other) {
     if (other.runtimeType != runtimeType) return false;
     final AssetThumbImageProvider typedOther = other;
-    return asset?.identifier == typedOther.asset?.identifier &&
+    return asset.identifier == typedOther.asset.identifier &&
         scale == typedOther.scale &&
         width == typedOther.width &&
         height == typedOther.height &&
@@ -71,9 +69,9 @@ class AssetThumbImageProvider extends ImageProvider<AssetThumbImageProvider> {
 
   @override
   int get hashCode =>
-      hashValues(asset?.identifier, scale, width, height, quality);
+      hashValues(asset.identifier, scale, width, height, quality);
 
   @override
-  String toString() => '$runtimeType(${asset?.identifier}, scale: $scale, '
+  String toString() => '$runtimeType(${asset.identifier}, scale: $scale, '
       'width: $width, height: $height, quality: $quality)';
 }

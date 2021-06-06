@@ -1,18 +1,18 @@
 class MaterialOptions {
-  final String actionBarColor;
-  final String statusBarColor;
-  final bool lightStatusBar;
-  final String actionBarTitleColor;
-  final String allViewTitle;
-  final String actionBarTitle;
-  final bool startInAllView;
-  final bool useDetailsView;
-  final String selectCircleStrokeColor;
-  final String selectionLimitReachedText;
-  final String textOnNothingSelected;
-  final String backButtonDrawable;
-  final String okButtonDrawable;
-  final bool autoCloseOnSelectionLimit;
+  final String? actionBarColor;
+  final String? statusBarColor;
+  final bool? lightStatusBar;
+  final String? actionBarTitleColor;
+  final String? allViewTitle;
+  final String? actionBarTitle;
+  final bool? startInAllView;
+  final bool? useDetailsView;
+  final String? selectCircleStrokeColor;
+  final String? selectionLimitReachedText;
+  final String? textOnNothingSelected;
+  final String? backButtonDrawable;
+  final String? okButtonDrawable;
+  final bool? autoCloseOnSelectionLimit;
 
   const MaterialOptions({
     this.actionBarColor,

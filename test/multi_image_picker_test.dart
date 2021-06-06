@@ -126,6 +126,41 @@ void main() {
           throwsArgumentError,
         );
       });
+
+      test('throws correct exception on cancel', () {
+        channel.setMockMethodCallHandler((MethodCall methodCall) async {
+          throw PlatformException(code: 'CANCELLED', message: 'Some error');
+        });
+
+        expect(
+          () => MultiImagePicker.pickImages(maxImages: 10),
+          throwsA(isA<NoImagesSelectedException>()),
+        );
+      });
+
+      test('throws correct exception when permission denied', () {
+        channel.setMockMethodCallHandler((MethodCall methodCall) async {
+          throw PlatformException(
+              code: 'PERMISSION_DENIED', message: 'Some error');
+        });
+
+        expect(
+          () => MultiImagePicker.pickImages(maxImages: 10),
+          throwsA(isA<PermissionDeniedException>()),
+        );
+      });
+
+      test('throws correct exception when permission permanently denied', () {
+        channel.setMockMethodCallHandler((MethodCall methodCall) async {
+          throw PlatformException(
+              code: 'PERMISSION_PERMANENTLY_DENIED', message: 'Some error');
+        });
+
+        expect(
+          () => MultiImagePicker.pickImages(maxImages: 10),
+          throwsA(isA<PermissionPermanentlyDeniedExeption>()),
+        );
+      });
     });
 
     test('requestOriginal accepts correct params', () async {

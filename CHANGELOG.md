@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+### Change (v5.0.01)
+- github url update
+
+### Change (v5.0.00)
+- Update BSImagePicker to 3.3.1
+
+### Change (v4.8.00)
+
+## 2021-03-06
+
+- Add Null safery and bumb the minimum Flutter version required.
+
 ### Change (v4.7.15)
 
 ## 2021-02-09
