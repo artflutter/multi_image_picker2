@@ -1,0 +1,29 @@
+PODS:
+  - BSImagePicker (3.3.1)
+  - Flutter (1.0.0)
+  - multi_image_picker2 (5.0.00):
+    - BSImagePicker (~> 3.3.1)
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - multi_image_picker2 (from `.symlinks/plugins/multi_image_picker2/ios`)
+
+SPEC REPOS:
+  trunk:
+    - BSImagePicker
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  multi_image_picker2:
+    :path: ".symlinks/plugins/multi_image_picker2/ios"
+
+SPEC CHECKSUMS:
+  BSImagePicker: 0fe04b574d4d6b81093785d2af6c26227efc8428
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  multi_image_picker2: f81a13124e7a2bc48e7d15ee539a5f8b9ff4d407
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.10.1

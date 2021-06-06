@@ -1,0 +1,27 @@
+name: multi_image_picker2
+description: Flutter plugin that allows you to display multi image picker on iOS and Android.
+version: 5.0.0
+homepage: https://github.com/artflutter/multi_image_picker2.git
+
+dependencies:
+  flutter:
+    sdk: flutter
+  meta: ^1.1.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# The following section is specific to Flutter.
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.vitanov.multiimagepicker
+        pluginClass: MultiImagePickerPlugin
+      ios:
+        pluginClass: MultiImagePicker2Plugin
+
+environment:
+  sdk: ">=2.0.0 <3.0.0"
+  flutter: ">=1.12.13 <2.0.0"
